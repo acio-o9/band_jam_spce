@@ -1,0 +1,12 @@
+{
+    "$schema":"https://alps-io.github.io/schemas/alps.json",
+    "alps" : {
+      "version":"1.0",
+      "title":"Band Jam",
+      "doc" : { "value":""},
+      "descriptor":[
+        {"id":"id", "type":"semantic", "def":"http://schema.org/identifier"},  
+        {"id":"Home", "type":"semantic", "descriptor": []}
+      ]
+    }
+  }
