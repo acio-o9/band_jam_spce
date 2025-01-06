@@ -279,8 +279,8 @@ const setupModeSwitch = (switchId, graphId, otherGraphId) => {
     document.addEventListener('DOMContentLoaded', async function() {
         try {
             await Promise.all([
-                    renderGraph("#asd-graph-id", 'digraph application_state_diagram {  graph [    labelloc="t";    fontname="Helvetica"    label="Band Jam";    URL="index.html" target="_parent"  ];  node [shape = box, style = "bold,filled" fillcolor="lightgray"];}'),
-                    renderGraph("#asd-graph-name", 'digraph application_state_diagram {  graph [    labelloc="t";    fontname="Helvetica"    label="Band Jam";    URL="index.html" target="_parent"  ];  node [shape = box, style = "bold,filled" fillcolor="lightgray"];}')
+                    renderGraph("#asd-graph-id", 'digraph application_state_diagram {  graph [    labelloc="t";    fontname="Helvetica"    label="Band Jam";    URL="index.html" target="_parent"  ];  node [shape = box, style = "bold,filled" fillcolor="lightgray"];    Live [margin=0.02, label=<<table cellspacing="0" cellpadding="5" border="0"><tr><td>Live<br />(Band)<br /></td></tr></table>>,shape=box URL="#Live" target="_parent"]    Band -> Member [label = <goMember (safe)> URL="#goMember" target="_parent" fontsize=13 class="goMember" penwidth=1.5];    Band -> Setlist [label = <goSetlist (safe)> URL="#goSetlist" target="_parent" fontsize=13 class="goSetlist" penwidth=1.5];    BandList -> Band [label = <goBand (safe)> URL="#goBand" target="_parent" fontsize=13 class="goBand" penwidth=1.5];    Event -> Event [label = <doUpdateEvent (unsafe)> URL="#doUpdateEvent" target="_parent" fontsize=13 class="doUpdateEvent" penwidth=1.5];    Event -> Setlist [label = <doDeleteEvent (idempotent)> URL="#doDeleteEvent" target="_parent" fontsize=13 class="doDeleteEvent" penwidth=1.5];    Home -> BandList [label = <goBandList (safe)> URL="#goBandList" target="_parent" fontsize=13 class="goBandList" penwidth=1.5];    Home -> LiveList [label = <goLiveList (safe)> URL="#goLiveList" target="_parent" fontsize=13 class="goLiveList" penwidth=1.5];    Home -> MemberList [label = <goMemberList (safe)> URL="#goMemberList" target="_parent" fontsize=13 class="goMemberList" penwidth=1.5];    Live -> Band [label=<<table border="0"><tr><td align="left" href="#doAddBand" tooltip="doAddBand (idempotent)" >doAddBand (idempotent)</td></tr><tr><td align="left" href="#goBand" tooltip="goBand (safe)" >goBand (safe)</td></tr></table>> fontsize=13];    LiveList -> Live [label=<<table border="0"><tr><td align="left" href="#doAddLive" tooltip="doAddLive (idempotent)" >doAddLive (idempotent)</td></tr><tr><td align="left" href="#goLive" tooltip="goLive (safe)" >goLive (safe)</td></tr></table>> fontsize=13];    MemberList -> Member [label = <goMember (safe)> URL="#goMember" target="_parent" fontsize=13 class="goMember" penwidth=1.5];    Setlist -> Event [label=<<table border="0"><tr><td align="left" href="#doAddEvent" tooltip="doAddEvent (idempotent)" >doAddEvent (idempotent)</td></tr><tr><td align="left" href="#goEvent" tooltip="goEvent (safe)" >goEvent (safe)</td></tr></table>> fontsize=13];    Band [label = <Band> URL="#Band" target="_parent"]    Member [label = <Member> URL="#Member" target="_parent"]    Setlist [label = <Setlist> URL="#Setlist" target="_parent"]    BandList [label = <BandList> URL="#BandList" target="_parent"]    Event [label = <Event> URL="#Event" target="_parent"]    Home [label = <Home> URL="#Home" target="_parent"]    LiveList [label = <LiveList> URL="#LiveList" target="_parent"]    MemberList [label = <MemberList> URL="#MemberList" target="_parent"]    Live [label = <Live> URL="#Live" target="_parent"]}'),
+                    renderGraph("#asd-graph-name", 'digraph application_state_diagram {  graph [    labelloc="t";    fontname="Helvetica"    label="Band Jam";    URL="index.html" target="_parent"  ];  node [shape = box, style = "bold,filled" fillcolor="lightgray"];    Live [margin=0.02, label=<<table cellspacing="0" cellpadding="5" border="0"><tr><td>ライブ詳細<br />(バンド詳細)<br /></td></tr></table>>,shape=box URL="#Live" target="_parent"]    Band -> Member [label = <goMember> URL="#goMember" target="_parent" fontsize=13 class="goMember" penwidth=1.5];    Band -> Setlist [label = <goSetlist> URL="#goSetlist" target="_parent" fontsize=13 class="goSetlist" penwidth=1.5];    BandList -> Band [label = <goBand> URL="#goBand" target="_parent" fontsize=13 class="goBand" penwidth=1.5];    Event -> Event [label = <<b><u>doUpdateEvent</u></b>> URL="#doUpdateEvent" target="_parent" fontsize=13 class="doUpdateEvent" penwidth=1.5];    Event -> Setlist [label = <<u>doDeleteEvent</u>> URL="#doDeleteEvent" target="_parent" fontsize=13 class="doDeleteEvent" penwidth=1.5];    Home -> BandList [label = <goBandList> URL="#goBandList" target="_parent" fontsize=13 class="goBandList" penwidth=1.5];    Home -> LiveList [label = <goLiveList> URL="#goLiveList" target="_parent" fontsize=13 class="goLiveList" penwidth=1.5];    Home -> MemberList [label = <goMemberList> URL="#goMemberList" target="_parent" fontsize=13 class="goMemberList" penwidth=1.5];    Live -> Band [label=<<table border="0"><tr><td align="left" href="#doAddBand" tooltip="doAddBand (idempotent)" ><u>doAddBand</u></td></tr><tr><td align="left" href="#goBand" tooltip="goBand (safe)" >goBand</td></tr></table>> fontsize=13];    LiveList -> Live [label=<<table border="0"><tr><td align="left" href="#doAddLive" tooltip="doAddLive (idempotent)" ><u>doAddLive</u></td></tr><tr><td align="left" href="#goLive" tooltip="goLive (safe)" >goLive</td></tr></table>> fontsize=13];    MemberList -> Member [label = <goMember> URL="#goMember" target="_parent" fontsize=13 class="goMember" penwidth=1.5];    Setlist -> Event [label=<<table border="0"><tr><td align="left" href="#doAddEvent" tooltip="doAddEvent (idempotent)" ><u>doAddEvent</u></td></tr><tr><td align="left" href="#goEvent" tooltip="goEvent (safe)" >goEvent</td></tr></table>> fontsize=13];    Band [label = <バンド詳細> URL="#Band" target="_parent"]    Member [label = <メンバー詳細> URL="#Member" target="_parent"]    Setlist [label = <セットリスト> URL="#Setlist" target="_parent"]    BandList [label = <バンド一覧> URL="#BandList" target="_parent"]    Event [label = <イベント> URL="#Event" target="_parent"]    Home [label = <Home> URL="#Home" target="_parent"]    LiveList [label = <ライブ一覧> URL="#LiveList" target="_parent"]    MemberList [label = <部員一覧> URL="#MemberList" target="_parent"]    Live [label = <ライブ詳細> URL="#Live" target="_parent"]}')
             ]);
             setupTagTrigger();
             setupModeSwitch('asd-show-id', 'asd-graph-id', 'asd-graph-name');
@@ -305,8 +305,29 @@ const setupModeSwitch = (switchId, graphId, otherGraphId) => {
 <div class="descriptor-list">
 
 <ul>
+<li><span class="indicator semantic" data-tooltip="semantic"> </span> <a href="#Band">Band</a></li>
+<li><span class="indicator semantic" data-tooltip="semantic"> </span> <a href="#BandList">BandList</a></li>
+<li><span class="indicator idempotent" data-tooltip="idempotent"> </span> <a href="#doAddBand">doAddBand</a></li>
+<li><span class="indicator idempotent" data-tooltip="idempotent"> </span> <a href="#doAddEvent">doAddEvent</a></li>
+<li><span class="indicator idempotent" data-tooltip="idempotent"> </span> <a href="#doAddLive">doAddLive</a></li>
+<li><span class="indicator idempotent" data-tooltip="idempotent"> </span> <a href="#doDeleteEvent">doDeleteEvent</a></li>
+<li><span class="indicator unsafe" data-tooltip="unsafe"> </span> <a href="#doUpdateEvent">doUpdateEvent</a></li>
+<li><span class="indicator semantic" data-tooltip="semantic"> </span> <a href="#Event">Event</a></li>
+<li><span class="indicator safe" data-tooltip="safe"> </span> <a href="#goBand">goBand</a></li>
+<li><span class="indicator safe" data-tooltip="safe"> </span> <a href="#goBandList">goBandList</a></li>
+<li><span class="indicator safe" data-tooltip="safe"> </span> <a href="#goEvent">goEvent</a></li>
+<li><span class="indicator safe" data-tooltip="safe"> </span> <a href="#goLive">goLive</a></li>
+<li><span class="indicator safe" data-tooltip="safe"> </span> <a href="#goLiveList">goLiveList</a></li>
+<li><span class="indicator safe" data-tooltip="safe"> </span> <a href="#goMember">goMember</a></li>
+<li><span class="indicator safe" data-tooltip="safe"> </span> <a href="#goMemberList">goMemberList</a></li>
+<li><span class="indicator safe" data-tooltip="safe"> </span> <a href="#goSetlist">goSetlist</a></li>
 <li><span class="indicator semantic" data-tooltip="semantic"> </span> <a href="#Home">Home</a></li>
 <li><span class="indicator semantic" data-tooltip="semantic"> </span> <a href="#id">id</a></li>
+<li><span class="indicator semantic" data-tooltip="semantic"> </span> <a href="#Live">Live</a></li>
+<li><span class="indicator semantic" data-tooltip="semantic"> </span> <a href="#LiveList">LiveList</a></li>
+<li><span class="indicator semantic" data-tooltip="semantic"> </span> <a href="#Member">Member</a></li>
+<li><span class="indicator semantic" data-tooltip="semantic"> </span> <a href="#MemberList">MemberList</a></li>
+<li><span class="indicator semantic" data-tooltip="semantic"> </span> <a href="#Setlist">Setlist</a></li>
 </ul>
 
 </div>
@@ -330,11 +351,216 @@ const setupModeSwitch = (switchId, graphId, otherGraphId) => {
     </div>
 </div>
 
+<h3><a id="Band">Band</a></h3>
+
+<ul>
+<li>type: semantic</li>
+<li>title: バンド詳細</li>
+<li>descriptor</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+  <th>id</th>
+  <th>type</th>
+  <th>title</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><a href="#goMember">goMember</a></td>
+  <td>safe</td>
+  <td></td>
+</tr>
+<tr>
+  <td><a href="#goSetlist">goSetlist</a></td>
+  <td>safe</td>
+  <td></td>
+</tr>
+</tbody>
+</table>
+
+<h3><a id="BandList">BandList</a></h3>
+
+<ul>
+<li>type: semantic</li>
+<li>title: バンド一覧</li>
+<li>descriptor</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+  <th>id</th>
+  <th>type</th>
+  <th>title</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><a href="#goBand">goBand</a></td>
+  <td>safe</td>
+  <td></td>
+</tr>
+</tbody>
+</table>
+
+<h3><a id="doAddBand">doAddBand</a></h3>
+
+<ul>
+<li>type: idempotent</li>
+<li>rt: <a href="#Band">Band</a></li>
+</ul>
+
+<h3><a id="doAddEvent">doAddEvent</a></h3>
+
+<ul>
+<li>type: idempotent</li>
+<li>rt: <a href="#Event">Event</a></li>
+</ul>
+
+<h3><a id="doAddLive">doAddLive</a></h3>
+
+<ul>
+<li>type: idempotent</li>
+<li>rt: <a href="#Live">Live</a></li>
+</ul>
+
+<h3><a id="doDeleteEvent">doDeleteEvent</a></h3>
+
+<ul>
+<li>type: idempotent</li>
+<li>rt: <a href="#Setlist">Setlist</a></li>
+</ul>
+
+<h3><a id="doUpdateEvent">doUpdateEvent</a></h3>
+
+<ul>
+<li>type: unsafe</li>
+<li>rt: <a href="#Event">Event</a></li>
+</ul>
+
+<h3><a id="Event">Event</a></h3>
+
+<ul>
+<li>type: semantic</li>
+<li>title: イベント</li>
+<li>descriptor</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+  <th>id</th>
+  <th>type</th>
+  <th>title</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><a href="#doUpdateEvent">doUpdateEvent</a></td>
+  <td>unsafe</td>
+  <td></td>
+</tr>
+<tr>
+  <td><a href="#doDeleteEvent">doDeleteEvent</a></td>
+  <td>idempotent</td>
+  <td></td>
+</tr>
+</tbody>
+</table>
+
+<h3><a id="goBand">goBand</a></h3>
+
+<ul>
+<li>type: safe</li>
+<li>rt: <a href="#Band">Band</a></li>
+</ul>
+
+<h3><a id="goBandList">goBandList</a></h3>
+
+<ul>
+<li>type: safe</li>
+<li>rt: <a href="#BandList">BandList</a></li>
+</ul>
+
+<h3><a id="goEvent">goEvent</a></h3>
+
+<ul>
+<li>type: safe</li>
+<li>rt: <a href="#Event">Event</a></li>
+</ul>
+
+<h3><a id="goLive">goLive</a></h3>
+
+<ul>
+<li>type: safe</li>
+<li>rt: <a href="#Live">Live</a></li>
+</ul>
+
+<h3><a id="goLiveList">goLiveList</a></h3>
+
+<ul>
+<li>type: safe</li>
+<li>rt: <a href="#LiveList">LiveList</a></li>
+</ul>
+
+<h3><a id="goMember">goMember</a></h3>
+
+<ul>
+<li>type: safe</li>
+<li>rt: <a href="#Member">Member</a></li>
+</ul>
+
+<h3><a id="goMemberList">goMemberList</a></h3>
+
+<ul>
+<li>type: safe</li>
+<li>rt: <a href="#MemberList">MemberList</a></li>
+</ul>
+
+<h3><a id="goSetlist">goSetlist</a></h3>
+
+<ul>
+<li>type: safe</li>
+<li>rt: <a href="#Setlist">Setlist</a></li>
+</ul>
+
 <h3><a id="Home">Home</a></h3>
 
 <ul>
 <li>type: semantic</li>
+<li>title: Home</li>
+<li>descriptor</li>
 </ul>
+
+<table>
+<thead>
+<tr>
+  <th>id</th>
+  <th>type</th>
+  <th>title</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><a href="#goLiveList">goLiveList</a></td>
+  <td>safe</td>
+  <td></td>
+</tr>
+<tr>
+  <td><a href="#goBandList">goBandList</a></td>
+  <td>safe</td>
+  <td></td>
+</tr>
+<tr>
+  <td><a href="#goMemberList">goMemberList</a></td>
+  <td>safe</td>
+  <td></td>
+</tr>
+</tbody>
+</table>
 
 <h3><a id="id">id</a></h3>
 
@@ -343,19 +569,257 @@ const setupModeSwitch = (switchId, graphId, otherGraphId) => {
 <li>def: <a href="http://schema.org/identifier">http://schema.org/identifier</a></li>
 </ul>
 
+<h3><a id="Live">Live</a></h3>
+
+<ul>
+<li>type: semantic</li>
+<li>title: ライブ詳細</li>
+<li>doc: Detail about the Live.</li>
+<li>descriptor</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+  <th>id</th>
+  <th>type</th>
+  <th>title</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><a href="#Band">Band</a></td>
+  <td>semantic</td>
+  <td>バンド詳細</td>
+</tr>
+<tr>
+  <td><a href="#goBand">goBand</a></td>
+  <td>safe</td>
+  <td></td>
+</tr>
+<tr>
+  <td><a href="#doAddBand">doAddBand</a></td>
+  <td>idempotent</td>
+  <td></td>
+</tr>
+</tbody>
+</table>
+
+<h3><a id="LiveList">LiveList</a></h3>
+
+<ul>
+<li>type: semantic</li>
+<li>title: ライブ一覧</li>
+<li>doc: List of Live.</li>
+<li>descriptor</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+  <th>id</th>
+  <th>type</th>
+  <th>title</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><a href="#goLive">goLive</a></td>
+  <td>safe</td>
+  <td></td>
+</tr>
+<tr>
+  <td><a href="#doAddLive">doAddLive</a></td>
+  <td>idempotent</td>
+  <td></td>
+</tr>
+</tbody>
+</table>
+
+<h3><a id="Member">Member</a></h3>
+
+<ul>
+<li>type: semantic</li>
+<li>title: メンバー詳細</li>
+</ul>
+
+<h3><a id="MemberList">MemberList</a></h3>
+
+<ul>
+<li>type: semantic</li>
+<li>title: 部員一覧</li>
+<li>descriptor</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+  <th>id</th>
+  <th>type</th>
+  <th>title</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><a href="#goMember">goMember</a></td>
+  <td>safe</td>
+  <td></td>
+</tr>
+</tbody>
+</table>
+
+<h3><a id="Setlist">Setlist</a></h3>
+
+<ul>
+<li>type: semantic</li>
+<li>title: セットリスト</li>
+<li>descriptor</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+  <th>id</th>
+  <th>type</th>
+  <th>title</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><a href="#goEvent">goEvent</a></td>
+  <td>safe</td>
+  <td></td>
+</tr>
+<tr>
+  <td><a href="#doAddEvent">doAddEvent</a></td>
+  <td>idempotent</td>
+  <td></td>
+</tr>
+</tbody>
+</table>
+
 <hr />
 
 <h2>Profile</h2>
 
 <pre><code>{
-    &quot;$schema&quot;:&quot;https://alps-io.github.io/schemas/alps.json&quot;,
+    &quot;$schema&quot;: &quot;https://alps-io.github.io/schemas/alps.json&quot;,
     &quot;alps&quot; : {
-      &quot;version&quot;:&quot;1.0&quot;,
-      &quot;title&quot;:&quot;Band Jam&quot;,
-      &quot;doc&quot; : { &quot;value&quot;:&quot;&quot;},
+      &quot;version&quot;: &quot;1.0&quot;,
+      &quot;title&quot;: &quot;Band Jam&quot;,
+      &quot;doc&quot; : { &quot;value&quot;: &quot;&quot;},
       &quot;descriptor&quot;:[
-        {&quot;id&quot;:&quot;id&quot;, &quot;type&quot;:&quot;semantic&quot;, &quot;def&quot;:&quot;http://schema.org/identifier&quot;},  
-        {&quot;id&quot;:&quot;Home&quot;, &quot;type&quot;:&quot;semantic&quot;, &quot;descriptor&quot;: []}
+        {&quot;id&quot;: &quot;id&quot;, &quot;type&quot;: &quot;semantic&quot;, &quot;def&quot;: &quot;http://schema.org/identifier&quot;},
+        {
+            &quot;id&quot;: &quot;Home&quot;,
+            &quot;title&quot;: &quot;Home&quot;,
+            &quot;type&quot;: &quot;semantic&quot;, 
+            &quot;descriptor&quot;: [
+                {&quot;href&quot;: &quot;#goLiveList&quot;},
+                {&quot;href&quot;: &quot;#goBandList&quot;},
+                {&quot;href&quot;: &quot;#goMemberList&quot;}
+            ]
+        },
+        {
+            &quot;id&quot;: &quot;LiveList&quot;,
+            &quot;title&quot;: &quot;ライブ一覧&quot;,
+            &quot;doc&quot;: {
+                &quot;format&quot;: &quot;text&quot;,
+                &quot;value&quot;: &quot;List of Live.&quot;
+            },
+            &quot;type&quot;: &quot;semantic&quot;,
+            &quot;descriptor&quot;: [
+                {&quot;href&quot;: &quot;#goLive&quot;},
+                {&quot;href&quot;: &quot;#doAddLive&quot;}
+            ]
+        },
+        {
+            &quot;id&quot;: &quot;Live&quot;,
+            &quot;title&quot;: &quot;ライブ詳細&quot;,
+            &quot;doc&quot;: {
+                &quot;format&quot;: &quot;text&quot;,
+                &quot;value&quot;: &quot;Detail about the Live.&quot;
+            },
+            &quot;type&quot;: &quot;semantic&quot;,
+            &quot;descriptor&quot;: [
+                {&quot;href&quot;: &quot;#goBand&quot;},
+                {&quot;href&quot;: &quot;#Band&quot;},
+                {&quot;href&quot;: &quot;#doAddBand&quot;}
+            ]
+        },
+        {
+            &quot;id&quot;: &quot;BandList&quot;,
+            &quot;title&quot;: &quot;バンド一覧&quot;,
+            &quot;type&quot;: &quot;semantic&quot;,
+            &quot;descriptor&quot;: [
+                {&quot;href&quot;: &quot;#goBand&quot;}
+            ]
+        },
+        {
+            &quot;id&quot;: &quot;Band&quot;,
+            &quot;title&quot;: &quot;バンド詳細&quot;,
+            &quot;type&quot;: &quot;semantic&quot;,
+            &quot;descriptor&quot;: [
+                {&quot;href&quot;: &quot;#goMember&quot;},
+                {&quot;href&quot;: &quot;#goSetlist&quot;}
+            ]
+        },
+        {
+            &quot;id&quot;: &quot;Setlist&quot;,
+            &quot;title&quot;: &quot;セットリスト&quot;,
+            &quot;descriptor&quot;: [
+                {
+                    &quot;href&quot;: &quot;#goEvent&quot;
+                },
+                {
+                    &quot;href&quot;: &quot;#doAddEvent&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: &quot;Event&quot;,
+            &quot;title&quot;: &quot;イベント&quot;,
+            &quot;descriptor&quot;: [
+                {
+                    &quot;href&quot;: &quot;#doDeleteEvent&quot;
+                },
+                {
+                    &quot;href&quot;: &quot;#doUpdateEvent&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: &quot;MemberList&quot;,
+            &quot;title&quot;: &quot;部員一覧&quot;,
+            &quot;type&quot;: &quot;semantic&quot;,
+            &quot;descriptor&quot;: [
+                {
+                    &quot;href&quot;: &quot;#goMember&quot;
+                }
+            ]
+        },
+        {
+            &quot;id&quot;: &quot;Member&quot;,
+            &quot;title&quot;: &quot;メンバー詳細&quot;,
+            &quot;type&quot;: &quot;semantic&quot;,
+            &quot;descriptor&quot;: [
+
+            ]
+        },
+        {&quot;id&quot;: &quot;goLiveList&quot;, &quot;type&quot;: &quot;safe&quot;, &quot;rt&quot;: &quot;#LiveList&quot;},
+        {&quot;id&quot;: &quot;goBandList&quot;, &quot;type&quot;: &quot;safe&quot;, &quot;rt&quot;: &quot;#BandList&quot;},
+        {&quot;id&quot;: &quot;goMemberList&quot;, &quot;type&quot;: &quot;safe&quot;, &quot;rt&quot;: &quot;#MemberList&quot;},
+        {&quot;id&quot;: &quot;doAddLive&quot;, &quot;type&quot;: &quot;idempotent&quot;, &quot;rt&quot;: &quot;#Live&quot;},
+        {&quot;id&quot;: &quot;goLive&quot;, &quot;type&quot;: &quot;safe&quot;, &quot;rt&quot;: &quot;#Live&quot;},
+        {&quot;id&quot;: &quot;goBand&quot;, &quot;type&quot;: &quot;safe&quot;, &quot;rt&quot;: &quot;#Band&quot;},
+        {&quot;id&quot;: &quot;doAddBand&quot;, &quot;type&quot;: &quot;idempotent&quot;, &quot;rt&quot;: &quot;#Band&quot;},
+        {&quot;id&quot;: &quot;goMember&quot;, &quot;type&quot;: &quot;safe&quot;, &quot;rt&quot;: &quot;#Member&quot;},
+        {&quot;id&quot;: &quot;goSetlist&quot;, &quot;type&quot;: &quot;safe&quot;, &quot;rt&quot;: &quot;#Setlist&quot;},
+        {&quot;id&quot;: &quot;goEvent&quot;, &quot;type&quot;: &quot;safe&quot;, &quot;rt&quot;: &quot;#Event&quot;},
+        {&quot;id&quot;: &quot;doAddEvent&quot;, &quot;type&quot;: &quot;idempotent&quot;, &quot;rt&quot;: &quot;#Event&quot;},
+        {&quot;id&quot;: &quot;doDeleteEvent&quot;, &quot;type&quot;: &quot;idempotent&quot;, &quot;rt&quot;: &quot;#Setlist&quot;},
+        {&quot;id&quot;: &quot;doUpdateEvent&quot;, &quot;type&quot;: &quot;unsafe&quot;, &quot;rt&quot;: &quot;#Event&quot;}
+
       ]
     }
   }</code></pre>

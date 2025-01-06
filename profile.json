@@ -1,12 +1,121 @@
 {
-    "$schema":"https://alps-io.github.io/schemas/alps.json",
+    "$schema": "https://alps-io.github.io/schemas/alps.json",
     "alps" : {
-      "version":"1.0",
-      "title":"Band Jam",
-      "doc" : { "value":""},
+      "version": "1.0",
+      "title": "Band Jam",
+      "doc" : { "value": ""},
       "descriptor":[
-        {"id":"id", "type":"semantic", "def":"http://schema.org/identifier"},  
-        {"id":"Home", "type":"semantic", "descriptor": []}
+        {"id": "id", "type": "semantic", "def": "http://schema.org/identifier"},
+        {
+            "id": "Home",
+            "title": "Home",
+            "type": "semantic", 
+            "descriptor": [
+                {"href": "#goLiveList"},
+                {"href": "#goBandList"},
+                {"href": "#goMemberList"}
+            ]
+        },
+        {
+            "id": "LiveList",
+            "title": "ライブ一覧",
+            "doc": {
+                "format": "text",
+                "value": "List of Live."
+            },
+            "type": "semantic",
+            "descriptor": [
+                {"href": "#goLive"},
+                {"href": "#doAddLive"}
+            ]
+        },
+        {
+            "id": "Live",
+            "title": "ライブ詳細",
+            "doc": {
+                "format": "text",
+                "value": "Detail about the Live."
+            },
+            "type": "semantic",
+            "descriptor": [
+                {"href": "#goBand"},
+                {"href": "#Band"},
+                {"href": "#doAddBand"}
+            ]
+        },
+        {
+            "id": "BandList",
+            "title": "バンド一覧",
+            "type": "semantic",
+            "descriptor": [
+                {"href": "#goBand"}
+            ]
+        },
+        {
+            "id": "Band",
+            "title": "バンド詳細",
+            "type": "semantic",
+            "descriptor": [
+                {"href": "#goMember"},
+                {"href": "#goSetlist"}
+            ]
+        },
+        {
+            "id": "Setlist",
+            "title": "セットリスト",
+            "descriptor": [
+                {
+                    "href": "#goEvent"
+                },
+                {
+                    "href": "#doAddEvent"
+                }
+            ]
+        },
+        {
+            "id": "Event",
+            "title": "イベント",
+            "descriptor": [
+                {
+                    "href": "#doDeleteEvent"
+                },
+                {
+                    "href": "#doUpdateEvent"
+                }
+            ]
+        },
+        {
+            "id": "MemberList",
+            "title": "部員一覧",
+            "type": "semantic",
+            "descriptor": [
+                {
+                    "href": "#goMember"
+                }
+            ]
+        },
+        {
+            "id": "Member",
+            "title": "メンバー詳細",
+            "type": "semantic",
+            "descriptor": [
+
+            ]
+        },
+        {"id": "goLiveList", "type": "safe", "rt": "#LiveList"},
+        {"id": "goBandList", "type": "safe", "rt": "#BandList"},
+        {"id": "goMemberList", "type": "safe", "rt": "#MemberList"},
+        {"id": "doAddLive", "type": "idempotent", "rt": "#Live"},
+        {"id": "goLive", "type": "safe", "rt": "#Live"},
+        {"id": "goBand", "type": "safe", "rt": "#Band"},
+        {"id": "doAddBand", "type": "idempotent", "rt": "#Band"},
+        {"id": "goMember", "type": "safe", "rt": "#Member"},
+        {"id": "goSetlist", "type": "safe", "rt": "#Setlist"},
+        {"id": "goEvent", "type": "safe", "rt": "#Event"},
+        {"id": "doAddEvent", "type": "idempotent", "rt": "#Event"},
+        {"id": "doDeleteEvent", "type": "idempotent", "rt": "#Setlist"},
+        {"id": "doUpdateEvent", "type": "unsafe", "rt": "#Event"}
+
       ]
     }
   }
