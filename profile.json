@@ -5,7 +5,31 @@
       "title": "Band Jam",
       "doc" : { "value": ""},
       "descriptor":[
-        {"id": "id", "type": "semantic", "def": "http://schema.org/identifier"},
+        {
+            "id": "id",
+            "type": "semantic",
+            "def": "http://schema.org/identifier"
+        },
+        {
+            "id": "paRequest",
+            "type": "semantic",
+            "title": "PA要求事項"
+        },
+        {
+            "id": "lightRequest",
+            "type": "semantic",
+            "title": "照明要求事項"
+        },
+        {
+            "id": "memberId",
+            "type": "semantic",
+            "title": "メンバーID"
+        },
+        {
+            "id": "part",
+            "type": "semantic",
+            "title": "担当"
+        },
         {
             "id": "Home",
             "title": "Home",
@@ -24,6 +48,7 @@
                 "value": "List of Live."
             },
             "type": "semantic",
+            "tag": "live",
             "descriptor": [
                 {"href": "#goLive"},
                 {"href": "#doAddLive"}
@@ -37,16 +62,32 @@
                 "value": "Detail about the Live."
             },
             "type": "semantic",
+            "tag": "live",
             "descriptor": [
-                {"href": "#goBand"},
+                {"href": "#goPerformanceBand"},
                 {"href": "#Band"},
-                {"href": "#doAddBand"}
+                {"href": "#doAddPerformanceBand"},
+                {"href": "#doUpdateLive"},
+                {"href": "#doCompleteLive"}
+            ]
+        },
+        {
+            "id": "PerformanceBand",
+            "title": "出演バンド",
+            "type": "semantic",
+            "tag": "live band",
+            "descriptor": [
+                {"href": "#Band"},
+                {"href": "#Setlist"},
+                {"href": "#goSetlist"},
+                {"href": "#goMember"}
             ]
         },
         {
             "id": "BandList",
             "title": "バンド一覧",
             "type": "semantic",
+            "tag": "band",
             "descriptor": [
                 {"href": "#goBand"}
             ]
@@ -55,60 +96,70 @@
             "id": "Band",
             "title": "バンド詳細",
             "type": "semantic",
+            "tag": "band",
             "descriptor": [
                 {"href": "#goMember"},
-                {"href": "#goSetlist"}
+                {"href": "#goLive"}
             ]
         },
         {
             "id": "Setlist",
             "title": "セットリスト",
+            "tag": "live",
             "descriptor": [
-                {
-                    "href": "#goEvent"
-                },
-                {
-                    "href": "#doAddEvent"
-                }
+                {"href": "#goEvent"},
+                {"href": "#doAddEvent"}
             ]
         },
         {
             "id": "Event",
             "title": "イベント",
+            "tag": "live",
             "descriptor": [
-                {
-                    "href": "#doDeleteEvent"
-                },
-                {
-                    "href": "#doUpdateEvent"
-                }
+                {"href": "#doDeleteEvent"},
+                {"href": "#doUpdateEvent"},
+                {"href": "#goMember"},
+                {"href": "#paRequest"},
+                {"href": "#lightRequest"},
+                {"href": "#memberId"},
+                {"href": "#part"}
             ]
         },
         {
             "id": "MemberList",
-            "title": "部員一覧",
+            "title": "メンバー一覧",
             "type": "semantic",
+            "tag": "member",
             "descriptor": [
-                {
-                    "href": "#goMember"
-                }
+                {"href": "#goMember"}
             ]
         },
         {
             "id": "Member",
             "title": "メンバー詳細",
             "type": "semantic",
+            "tag": "member",
             "descriptor": [
-
+                {"href": "#goBand"}
             ]
         },
         {"id": "goLiveList", "type": "safe", "rt": "#LiveList"},
         {"id": "goBandList", "type": "safe", "rt": "#BandList"},
+        {"id": "goPerformanceBand", "type": "safe", "rt": "#PerformanceBand"},
         {"id": "goMemberList", "type": "safe", "rt": "#MemberList"},
         {"id": "doAddLive", "type": "idempotent", "rt": "#Live"},
         {"id": "goLive", "type": "safe", "rt": "#Live"},
+        {"id": "doUpdateLive", "type": "unsafe", "rt": "#Live"},
+        {"id": "doCompleteLive", "type": "idempotent", "rt": "#Live"},
         {"id": "goBand", "type": "safe", "rt": "#Band"},
-        {"id": "doAddBand", "type": "idempotent", "rt": "#Band"},
+        {
+            "id": "doAddPerformanceBand",
+            "type": "idempotent",
+            "descriptor": [
+                {"href": "#Band"}
+            ],
+            "rt": "#PerformanceBand"
+        },
         {"id": "goMember", "type": "safe", "rt": "#Member"},
         {"id": "goSetlist", "type": "safe", "rt": "#Setlist"},
         {"id": "goEvent", "type": "safe", "rt": "#Event"},
